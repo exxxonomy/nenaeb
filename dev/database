@@ -1,1 +1,10 @@
+import psycopg2
 
+conn = psycopg2.connect(
+    dbname="bet_scanner",
+    user="postgres",
+    password="password",
+    host="localhost"
+)
+
+cursor = conn.cursor()
