@@ -8,3 +8,32 @@ conn = psycopg2.connect(
 )
 
 cursor = conn.cursor()
+# создание таблиц
+CREATE TABLE odds (
+ id SERIAL PRIMARY KEY,
+ match TEXT,
+ bookmaker TEXT,
+ market TEXT,
+ odds FLOAT,
+ timestamp TIMESTAMP
+);
+# алгоритм поиска вилок
+
+def check_arb(odd1, odd2):
+
+    value = (1/odd1) + (1/odd2)
+
+    if value < 1:
+        profit = (1 - value) * 100
+        return True, profit
+
+    return False, 0
+# поиск value ставок
+def value_bet(odds, probability):
+
+    value = odds * probability - 1
+
+    if value > 0:
+        return True
+
+    return False
