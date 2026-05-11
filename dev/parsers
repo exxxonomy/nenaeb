@@ -1,1 +1,21 @@
+# пример простого парсера
 
+from playwright.sync_api import sync_playwright
+
+def get_odds():
+
+    url = "https://www.fon.bet/sports/football"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+
+        page.goto(url)
+
+        odds = page.locator(".coefficient")
+
+        data = odds.all_inner_texts()
+
+        browser.close()
+
+        return data
