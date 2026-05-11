@@ -19,3 +19,16 @@ def get_odds():
         browser.close()
 
         return data
+def filter_odds(odds):
+
+    if 2.0 <= odds <= 5.0:
+        return True
+
+    return False
+import time
+
+while True:
+
+    scan()
+
+    time.sleep(10)
