@@ -1,1 +1,26 @@
+# Создай React-проект
+npx create-react-app dashboard
 
+import React, { useEffect, useState } from "react";
+
+function App() {
+
+ const [bets, setBets] = useState([]);
+
+ useEffect(() => {
+
+  fetch("http://localhost:8000/arbs")
+   .then(res => res.json())
+   .then(data => setBets(data));
+
+ }, []);
+
+ return (
+  <div>
+   <h1>Arbitrage Bets</h1>
+   {JSON.stringify(bets)}
+  </div>
+ );
+}
+
+export default App;
