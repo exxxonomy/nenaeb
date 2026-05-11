@@ -1,2 +1,16 @@
 # pip install fastapi uvicorn playwright pandas psycopg2 библиотека для работы
 # pip install playwright автоматика сайта
+
+# API сервера
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/arbs")
+def get_arbs():
+    return {"message": "arbitrage bets"}
+
+@app.get("/value")
+def get_value():
+    return {"message": "value bets"}
